@@ -39,7 +39,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="movable">
        <bool>true</bool>
@@ -697,11 +697,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPlainTextEdit" name="plainTextEdit_FETCHCOMMAND">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(215, 215, 212);</string>
-          </property>
-         </widget>
+         <widget class="QTextEdit" name="textEdit_FETCHCOMMAND"/>
         </item>
         <item>
          <widget class="QLabel" name="label_13">
@@ -719,11 +715,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPlainTextEdit" name="plainTextEdit_RESUMECOMMAND">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(215, 215, 212);</string>
-          </property>
-         </widget>
+         <widget class="QTextEdit" name="textEdit_RESUMECOMMAND"/>
         </item>
         <item>
          <widget class="QLabel" name="label_14">
@@ -741,11 +733,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPlainTextEdit" name="plainTextEdit_GENTOOMIRRORS">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(215, 215, 212);</string>
-          </property>
-         </widget>
+         <widget class="QTextEdit" name="textEdit_GENTOOMIRRORS"/>
         </item>
        </layout>
       </widget>

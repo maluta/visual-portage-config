@@ -25,12 +25,100 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->comboBox_UseFlag,SIGNAL(currentIndexChanged(int)),this,SLOT(describeUseFlag(int)));
     connect(ui->pushButton_addUseFlag,SIGNAL(clicked()),this,SLOT(addUseFlag()));
     connect(ui->pushButton_Features,SIGNAL(clicked()),this,SLOT(addFeaturesFlag()));
-
     connect(ui->lineEdit_USE,SIGNAL(textChanged(QString)),this,SLOT(changeConfig(QString)));
 
-    parse();
+    setupModel(); // don't forget it
+
+    mapper_USE = new QDataWidgetMapper(this);
+    mapper_USE = new QDataWidgetMapper(this);
+    mapper_CHOST = new QDataWidgetMapper(this);
+    mapper_CFLAGS = new QDataWidgetMapper(this);
+    mapper_CXXFLAGS = new QDataWidgetMapper(this);
+    mapper_ACCEPTKEYWORDS = new QDataWidgetMapper(this);
+    mapper_FEATURES = new QDataWidgetMapper(this);
+    mapper_MAKEOPTS = new QDataWidgetMapper(this);
+    mapper_PORTDIR = new QDataWidgetMapper(this);
+    mapper_DISTDIR = new QDataWidgetMapper(this);
+    mapper_PORTAGETMPDIR = new QDataWidgetMapper(this);
+    mapper_PKGDIR = new QDataWidgetMapper(this);
+    mapper_PORTLOGDIR = new QDataWidgetMapper(this);
+    mapper_PORTDIROVERLAY = new QDataWidgetMapper(this);
+    mapper_PORTAGEELOGCLASSES = new QDataWidgetMapper(this);
+    mapper_FETCHCOMMAND = new QDataWidgetMapper(this);
+    mapper_RESUMECOMMAND = new QDataWidgetMapper(this);
+    mapper_GENTOOMIRRORS = new QDataWidgetMapper(this);
+
+    mapper_USE->setModel(model);
+    mapper_CHOST->setModel(model);
+    mapper_CFLAGS->setModel(model);
+    mapper_CXXFLAGS->setModel(model);
+    mapper_ACCEPTKEYWORDS->setModel(model);
+    mapper_FEATURES->setModel(model);
+    mapper_MAKEOPTS->setModel(model);
+    mapper_PORTDIR->setModel(model);
+    mapper_DISTDIR->setModel(model);
+    mapper_PORTAGETMPDIR->setModel(model);
+    mapper_PKGDIR->setModel(model);
+    mapper_PORTLOGDIR->setModel(model);
+    mapper_PORTDIROVERLAY->setModel(model);
+    mapper_PORTAGEELOGCLASSES->setModel(model);
+    mapper_FETCHCOMMAND->setModel(model);
+    mapper_RESUMECOMMAND->setModel(model);
+    mapper_GENTOOMIRRORS->setModel(model);
+
+    mapper_USE->addMapping(ui->lineEdit_USE,0);
+    mapper_CHOST->addMapping(ui->lineEdit_CHOST,0);
+    mapper_CFLAGS->addMapping(ui->lineEdit_CFLAGS,0);
+    mapper_CXXFLAGS->addMapping(ui->lineEdit_CXXFLAGS,0);
+    mapper_ACCEPTKEYWORDS->addMapping(ui->lineEdit_ACCEPTKEYWORDS,0);
+    mapper_FEATURES->addMapping(ui->lineEdit_FEATURES,0);
+    mapper_MAKEOPTS->addMapping(ui->lineEdit_MAKEOPTS,0);
+    mapper_PORTDIR->addMapping(ui->lineEdit_PORTDIR,0);
+    mapper_DISTDIR->addMapping(ui->lineEdit_DISTDIR,0);
+    mapper_PORTAGETMPDIR->addMapping(ui->lineEdit_PORTAGETMPDIR,0);
+    mapper_PKGDIR->addMapping(ui->lineEdit_PKGDIR,0);
+    mapper_PORTLOGDIR->addMapping(ui->lineEdit_PORTLOGDIR,0);
+    mapper_PORTDIROVERLAY->addMapping(ui->lineEdit_PORTDIROVERLAY,0);
+    mapper_PORTAGEELOGCLASSES->addMapping(ui->lineEdit_PORTAGEELOGCLASSES,0);
+    mapper_FETCHCOMMAND->addMapping(ui->textEdit_FETCHCOMMAND,0);
+    mapper_RESUMECOMMAND->addMapping(ui->textEdit_RESUMECOMMAND,0);
+    mapper_GENTOOMIRRORS->addMapping(ui->textEdit_GENTOOMIRRORS,0);
+
+    mapper_USE->setCurrentIndex(2);
+    mapper_CHOST->setCurrentIndex(4);
+    mapper_CFLAGS->setCurrentIndex(5);
+    mapper_CXXFLAGS->setCurrentIndex(6);
+    mapper_ACCEPTKEYWORDS->setCurrentIndex(7);
+    mapper_FEATURES->setCurrentIndex(19);
+    mapper_MAKEOPTS->setCurrentIndex(17);
+    mapper_PORTDIR->setCurrentIndex(9);
+    mapper_DISTDIR->setCurrentIndex(10);
+    mapper_PORTAGETMPDIR->setCurrentIndex(17);
+    mapper_PKGDIR->setCurrentIndex(11);
+    mapper_PORTLOGDIR->setCurrentIndex(12);
+    mapper_PORTDIROVERLAY->setCurrentIndex(13);
+    mapper_PORTAGEELOGCLASSES->setCurrentIndex(20);
+    mapper_FETCHCOMMAND->setCurrentIndex(14);
+    mapper_RESUMECOMMAND->setCurrentIndex(15);
+    mapper_GENTOOMIRRORS->setCurrentIndex(16);
 
  }
+
+void MainWindow::setupModel() {
+
+    model = new QStandardItemModel(this);
+    int index=0;
+
+    foreach (const QString &s, list) {
+
+    QStandardItem *item1 = new QStandardItem(list.at(index));
+    model->setItem(index,item1);
+
+    index++;
+
+    }
+
+}
 
 MainWindow::~MainWindow()
 {
@@ -99,71 +187,6 @@ void MainWindow::describeUseFlag(int i) {
     statusBar()->showMessage(useflagdescription.at(i));
 }
 
-void MainWindow::parse()
-{
-    QRegExp rx("=\"?(.*)\"?");
-
-    foreach (const QString &s, list) {
-
-        rx.indexIn(s,0);
-
-        if (s.startsWith("USE"))
-            ui->lineEdit_USE->setText(rx.cap(1));
-
-        if (s.startsWith("CHOST"))
-            ui->lineEdit_CHOST->setText(rx.cap(1));
-
-        if (s.startsWith("CFLAGS"))
-            ui->lineEdit_CFLAGS->setText(rx.cap(1));
-
-        if (s.startsWith("CXXFLAGS"))
-            ui->lineEdit_CXXFLAGS->setText(rx.cap(1));
-
-        if (s.startsWith("ACCEPT_KEYWORDS"))
-            ui->lineEdit_ACCEPTKEYWORDS->setText(rx.cap(1));
-
-        if (s.startsWith("FEATURES"))
-            ui->lineEdit_FEATURES->setText(rx.cap(1));
-
-        if (s.startsWith("MAKEOPTS"))
-            ui->lineEdit_MAKEOPTS->setText(rx.cap(1));
-
-        if (s.startsWith("PORTDIR"))
-            ui->lineEdit_PORTDIR->setText(rx.cap(1));
-
-        if (s.startsWith("DISTDIR"))
-            ui->lineEdit_DISTDIR->setText(rx.cap(1));
-
-        if (s.startsWith("PORTAGE_TMPDIR"))
-            ui->lineEdit_PORTAGETMPDIR->setText(rx.cap(1));
-
-        if (s.startsWith("PKGDIR"))
-            ui->lineEdit_PKGDIR->setText(rx.cap(1));
-
-        if (s.startsWith("PORT_LOGDIR"))
-            ui->lineEdit_PORTLOGDIR->setText(rx.cap(1));
-
-        if (s.startsWith("PORTDIR_OVERLAY"))
-            ui->lineEdit_PORTDIROVERLAY->setText(rx.cap(1));
-
-        if (s.startsWith("PORTAGE_ELOG_CLASSES"))
-            ui->lineEdit_PORTAGEELOGCLASSES->setText(rx.cap(1));
-
-        if (s.startsWith("FETCHCOMMAND")) {
-            ui->plainTextEdit_FETCHCOMMAND->clear();
-            ui->plainTextEdit_FETCHCOMMAND->appendPlainText(rx.cap(1));
-        }
-        if (s.startsWith("RESUMECOMMAND")) {
-            ui->plainTextEdit_RESUMECOMMAND->clear();
-            ui->plainTextEdit_RESUMECOMMAND->appendPlainText(rx.cap(1));
-        }
-        if (s.startsWith("GENTOO_MIRRORS")) {
-            ui->plainTextEdit_GENTOOMIRRORS->clear();
-            ui->plainTextEdit_GENTOOMIRRORS->appendPlainText(rx.cap(1));
-
-        }
-    }
-}
 
 void MainWindow::addUseFlag() {
 

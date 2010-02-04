@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <QFile>
+#include <QStandardItemModel>
+#include <QDataWidgetMapper>
+
+
 
 #include "highlighter.h"
 
@@ -23,7 +27,6 @@ private slots:
     void HideComment1st(bool);
     void HideComment(bool);
     void describeUseFlag(int);
-    void parse();
     void addUseFlag();
     void addFeaturesFlag();
     void changeConfig(QString);
@@ -39,6 +42,27 @@ private:
 
     void AddUseList();
 
+    void setupModel();
+
+    QStandardItemModel *model;
+
+    QDataWidgetMapper *mapper_USE;
+    QDataWidgetMapper *mapper_CHOST;
+    QDataWidgetMapper *mapper_CFLAGS;
+    QDataWidgetMapper *mapper_CXXFLAGS;
+    QDataWidgetMapper *mapper_ACCEPTKEYWORDS;
+    QDataWidgetMapper *mapper_FEATURES;
+    QDataWidgetMapper *mapper_MAKEOPTS;
+    QDataWidgetMapper *mapper_PORTDIR;
+    QDataWidgetMapper *mapper_DISTDIR;
+    QDataWidgetMapper *mapper_PORTAGETMPDIR;
+    QDataWidgetMapper *mapper_PKGDIR;
+    QDataWidgetMapper *mapper_PORTLOGDIR;
+    QDataWidgetMapper *mapper_PORTDIROVERLAY;
+    QDataWidgetMapper *mapper_PORTAGEELOGCLASSES;
+    QDataWidgetMapper *mapper_FETCHCOMMAND;
+    QDataWidgetMapper *mapper_RESUMECOMMAND;
+    QDataWidgetMapper *mapper_GENTOOMIRRORS;
 
 };
 
