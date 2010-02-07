@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "constants.h"
 
 #include <QRegExp>
 #include <QDebug>
@@ -7,7 +8,8 @@
 #include <QStandardItemModel>
 #include <QAbstractItemModel>
 #include <QListView>
-
+#include <QMap>
+#include <QVariant>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -84,25 +86,33 @@ MainWindow::MainWindow(QWidget *parent) :
     mapper_RESUMECOMMAND->addMapping(ui->textEdit_RESUMECOMMAND,0);
     mapper_GENTOOMIRRORS->addMapping(ui->textEdit_GENTOOMIRRORS,0);
 
-    mapper_USE->setCurrentIndex(2);
-    mapper_CHOST->setCurrentIndex(4);
-    mapper_CFLAGS->setCurrentIndex(5);
-    mapper_CXXFLAGS->setCurrentIndex(6);
-    mapper_ACCEPTKEYWORDS->setCurrentIndex(7);
-    mapper_FEATURES->setCurrentIndex(19);
-    mapper_MAKEOPTS->setCurrentIndex(17);
-    mapper_PORTDIR->setCurrentIndex(9);
-    mapper_DISTDIR->setCurrentIndex(10);
-    mapper_PORTAGETMPDIR->setCurrentIndex(17);
-    mapper_PKGDIR->setCurrentIndex(11);
-    mapper_PORTLOGDIR->setCurrentIndex(12);
-    mapper_PORTDIROVERLAY->setCurrentIndex(13);
-    mapper_PORTAGEELOGCLASSES->setCurrentIndex(20);
-    mapper_FETCHCOMMAND->setCurrentIndex(14);
-    mapper_RESUMECOMMAND->setCurrentIndex(15);
-    mapper_GENTOOMIRRORS->setCurrentIndex(16);
+    mapper_USE->setCurrentIndex(N_USE);
+    mapper_CHOST->setCurrentIndex(N_CHOST);
+    mapper_CFLAGS->setCurrentIndex(N_CFLAGS);
+    mapper_CXXFLAGS->setCurrentIndex(N_CXXFLAGS);
+    mapper_ACCEPTKEYWORDS->setCurrentIndex(N_ACCEPTKEYWORDS);
+    mapper_FEATURES->setCurrentIndex(N_FEATURES);
+    mapper_MAKEOPTS->setCurrentIndex(N_MAKEOPTS);
+    mapper_PORTDIR->setCurrentIndex(N_PORTDIR);
+    mapper_DISTDIR->setCurrentIndex(N_DISTDIR);
+    mapper_PORTAGETMPDIR->setCurrentIndex(N_PORTAGETMPDIR);
+    mapper_PKGDIR->setCurrentIndex(N_PKGDIR);
+    mapper_PORTLOGDIR->setCurrentIndex(N_PORTLOGDIR);
+    mapper_PORTDIROVERLAY->setCurrentIndex(N_PORTDIROVERLAY);
+    mapper_PORTAGEELOGCLASSES->setCurrentIndex(N_PORTAGEELOGCLASSES);
+    mapper_FETCHCOMMAND->setCurrentIndex(N_FETCHCOMMAND);
+    mapper_RESUMECOMMAND->setCurrentIndex(N_RESUMECOMMAND);
+    mapper_GENTOOMIRRORS->setCurrentIndex(N_GENTOOMIRRORS);
 
+
+    connect(model,SIGNAL(itemChanged(QStandardItem*)),this,SLOT(_foo(QStandardItem*)));
  }
+
+void MainWindow::_foo(QStandardItem*) {
+
+    qDebug() << "data changed";
+
+}
 
 void MainWindow::setupModel() {
 
@@ -194,6 +204,11 @@ void MainWindow::addUseFlag() {
 }
 
 void MainWindow::addFeaturesFlag() {
+
+    QStandardItem *item1 = new QStandardItem("YAHOO!");
+    model->setItem(2,item1);
+    mapper_USE->setCurrentIndex(2);
+
 
     ui->lineEdit_FEATURES->setText("\"" + ui->lineEdit_FEATURES->text().replace("\"","") + ui->comboBox_Features->currentText() + " \"");
 }

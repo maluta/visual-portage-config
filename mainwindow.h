@@ -5,10 +5,9 @@
 #include <QFile>
 #include <QStandardItemModel>
 #include <QDataWidgetMapper>
-
-
-
 #include "highlighter.h"
+
+
 
 namespace Ui {
     class MainWindow;
@@ -30,6 +29,7 @@ private slots:
     void addUseFlag();
     void addFeaturesFlag();
     void changeConfig(QString);
+    void _foo(QStandardItem*);
 
 private:
     Ui::MainWindow *ui;
