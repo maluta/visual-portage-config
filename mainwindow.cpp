@@ -34,8 +34,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->pushButton_Save,SIGNAL(clicked()),this,SLOT(SaveConf()));
 
-
-
     SetupModel(); // don't forget it
 
     mapper_USE = new QDataWidgetMapper(this);
@@ -143,9 +141,6 @@ void MainWindow::ListUpdate(QFile *f) {
         list << alltext;
     }
     list.removeDuplicates();
-
-
-
 }
 
 void MainWindow::HideComment1st(bool b) {
@@ -156,14 +151,10 @@ void MainWindow::HideComment1st(bool b) {
     if (b) {
 
         ListUpdate(f); // return on private variable 'list'
-
         alltext = list.join("");
-
 
         ui->textEdit_makeconfig->setReadOnly(true);
         ui->checkBox_Comments->setText("&Hide comments (read-only)");
-
-
 
     } else {
         alltext = f->readAll();
@@ -178,8 +169,6 @@ void MainWindow::HideComment1st(bool b) {
   }
 
 void MainWindow::HideComment(bool b) {
-
-
 }
 
 void MainWindow::AddUseList() {
@@ -241,12 +230,7 @@ void MainWindow::addFeaturesFlag() {
 
 }
 
-
-
 void MainWindow::changeConfig(QString s) {
-
-
-
 }
 
 void MainWindow::SaveConf() {
@@ -284,9 +268,10 @@ void MainWindow::UpdateGeneral() {
     f->close();
 
     // Update USE flag
-    model->item(N_USE,0)->setText(ui->lineEdit_USE->text());
-    alltext.replace(list.at(N_USE),ui->lineEdit_USE->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_USE->text(),list.at(N_USE))) {
+        model->item(N_USE,0)->setText(ui->lineEdit_USE->text());
+        alltext.replace(list.at(N_USE),ui->lineEdit_USE->text()+"\n");
+    }
     // Update CHOST flag
     model->item(N_CHOST,0)->setText(ui->lineEdit_CHOST->text());
     alltext.replace(list.at(N_CHOST),ui->lineEdit_CHOST->text()+"\n");
@@ -390,8 +375,6 @@ void MainWindow::UpdateDownload() {
     f->open(QIODevice::WriteOnly | QIODevice::Text);
     f->write(alltext.toAscii());
     f->close();
-
-
 }
 
 void MainWindow::changeEvent(QEvent *e)
