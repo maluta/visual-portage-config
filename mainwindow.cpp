@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     highlighter = new Highlighter(ui->textEdit_makeconfig->document());
 
+    ui->mainToolBar->setVisible(false);
+
     connect(ui->checkBox_Comments,SIGNAL(clicked(bool)),this,SLOT(HideComment1st(bool)));
     connect(ui->comboBox_UseFlag,SIGNAL(currentIndexChanged(int)),this,SLOT(describeUseFlag(int)));
     connect(ui->pushButton_addUseFlag,SIGNAL(clicked()),this,SLOT(addUseFlag()));

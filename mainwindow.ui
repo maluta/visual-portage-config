@@ -11,10 +11,16 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Visual make.conf (Portage) [BETA]</string>
+   <string>Visual make.conf (Portage)</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
+  </property>
+  <property name="animated">
+   <bool>false</bool>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -919,7 +925,7 @@
      <x>0</x>
      <y>0</y>
      <width>879</width>
-     <height>24</height>
+     <height>28</height>
     </rect>
    </property>
   </widget>
@@ -932,8 +938,30 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_Quit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>action_Quit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>439</x>
+     <y>222</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
