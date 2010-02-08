@@ -141,7 +141,26 @@ void MainWindow::ListUpdate(QFile *f) {
         list << alltext;
     }
     list.removeDuplicates();
-}
+
+
+    list.swap(list.indexOf(QRegExp("^USE.+")),N_USE);
+    list.swap(list.indexOf(QRegExp("^CHOST.+")),N_CHOST);
+    list.swap(list.indexOf(QRegExp("^CFLAGS.+")),N_CFLAGS);
+    list.swap(list.indexOf(QRegExp("^CXXFLAGS.+")),N_CXXFLAGS);
+    list.swap(list.indexOf(QRegExp("^ACCEPT_KEYWORDS.+")),N_ACCEPTKEYWORDS);
+    list.swap(list.indexOf(QRegExp("^FEATURES.+")),N_FEATURES);
+    list.swap(list.indexOf(QRegExp("^PORTAGE_TMPDIR.+")),N_PORTAGETMPDIR);
+    list.swap(list.indexOf(QRegExp("^PORTDIR.+")),N_PORTDIR);
+    list.swap(list.indexOf(QRegExp("^DISTDIR.+")),N_DISTDIR);
+    list.swap(list.indexOf(QRegExp("^PKGDIR.+")),N_PKGDIR);
+    list.swap(list.indexOf(QRegExp("^PORT_LOGDIR.+")),N_PORTLOGDIR);
+    list.swap(list.indexOf(QRegExp("^PORTDIR_OVERLAY.+")),N_PORTDIROVERLAY);
+    list.swap(list.indexOf(QRegExp("^FETCHCOMMAND.+")),N_FETCHCOMMAND);
+    list.swap(list.indexOf(QRegExp("^RESUMECOMMAND.+")),N_RESUMECOMMAND);
+    list.swap(list.indexOf(QRegExp("^GENTOO_MIRRORS.+")),N_GENTOOMIRRORS);
+    list.swap(list.indexOf(QRegExp("^MAKEOPTS.+")),N_MAKEOPTS);
+    list.swap(list.indexOf(QRegExp("^PORTAGE_ELOG_CLASSES.+")),N_PORTAGEELOGCLASSES);
+ }
 
 void MainWindow::HideComment1st(bool b) {
 
@@ -226,8 +245,6 @@ void MainWindow::addFeaturesFlag() {
     _t = _t.insert(_t.length(),"\"");
 
     ui->lineEdit_FEATURES->setText(_t);
-
-
 }
 
 void MainWindow::changeConfig(QString s) {
