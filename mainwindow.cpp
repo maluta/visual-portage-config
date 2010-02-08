@@ -273,25 +273,30 @@ void MainWindow::UpdateGeneral() {
         alltext.replace(list.at(N_USE),ui->lineEdit_USE->text()+"\n");
     }
     // Update CHOST flag
-    model->item(N_CHOST,0)->setText(ui->lineEdit_CHOST->text());
-    alltext.replace(list.at(N_CHOST),ui->lineEdit_CHOST->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_CHOST->text(),list.at(N_CHOST))) {
+        model->item(N_CHOST,0)->setText(ui->lineEdit_CHOST->text());
+        alltext.replace(list.at(N_CHOST),ui->lineEdit_CHOST->text()+"\n");
+    }
     // Update CXXFLAGS flag
-    model->item(N_CXXFLAGS,0)->setText(ui->lineEdit_CXXFLAGS->text());
-    alltext.replace(list.at(N_CXXFLAGS),ui->lineEdit_CXXFLAGS->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_CXXFLAGS->text(),list.at(N_CXXFLAGS))) {
+        model->item(N_CXXFLAGS,0)->setText(ui->lineEdit_CXXFLAGS->text());
+        alltext.replace(list.at(N_CXXFLAGS),ui->lineEdit_CXXFLAGS->text()+"\n");
+    }
     // Update ACCEPTKEYWORDS flag
-    model->item(N_ACCEPTKEYWORDS,0)->setText(ui->lineEdit_ACCEPTKEYWORDS->text());
-    alltext.replace(list.at(N_ACCEPTKEYWORDS),ui->lineEdit_ACCEPTKEYWORDS->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_ACCEPTKEYWORDS->text(),list.at(N_ACCEPTKEYWORDS))) {
+        model->item(N_ACCEPTKEYWORDS,0)->setText(ui->lineEdit_ACCEPTKEYWORDS->text());
+        alltext.replace(list.at(N_ACCEPTKEYWORDS),ui->lineEdit_ACCEPTKEYWORDS->text()+"\n");
+    }
     // Update FEATURES flag
-    model->item(N_FEATURES,0)->setText(ui->lineEdit_FEATURES->text());
-    alltext.replace(list.at(N_FEATURES),ui->lineEdit_FEATURES->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_ACCEPTKEYWORDS->text(),list.at(N_ACCEPTKEYWORDS))) {
+        model->item(N_FEATURES,0)->setText(ui->lineEdit_FEATURES->text());
+        alltext.replace(list.at(N_FEATURES),ui->lineEdit_FEATURES->text()+"\n");
+    }
     // Update MAKEOPTS flag
-    model->item(N_MAKEOPTS,0)->setText(ui->lineEdit_MAKEOPTS->text());
-    alltext.replace(list.at(N_MAKEOPTS),ui->lineEdit_MAKEOPTS->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_MAKEOPTS->text(),list.at(N_MAKEOPTS))) {
+        model->item(N_MAKEOPTS,0)->setText(ui->lineEdit_MAKEOPTS->text());
+        alltext.replace(list.at(N_MAKEOPTS),ui->lineEdit_MAKEOPTS->text()+"\n");
+    }
     // refresh
     ui->textEdit_makeconfig->setText(alltext);
 
@@ -310,33 +315,40 @@ void MainWindow::UpdatePortage() {
     f->close();
 
     // Update PORTDIR flag
-    model->item(N_PORTDIR,0)->setText(ui->lineEdit_PORTDIR->text());
-    alltext.replace(list.at(N_PORTDIR),ui->lineEdit_PORTDIR->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_PORTDIR->text(),list.at(N_PORTDIR))) {
+        model->item(N_PORTDIR,0)->setText(ui->lineEdit_PORTDIR->text());
+        alltext.replace(list.at(N_PORTDIR),ui->lineEdit_PORTDIR->text()+"\n");
+    }
     // Update DISTDIR flag
-    model->item(N_DISTDIR,0)->setText(ui->lineEdit_DISTDIR->text());
-    alltext.replace(list.at(N_DISTDIR),ui->lineEdit_DISTDIR->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_DISTDIR->text(),list.at(N_DISTDIR))) {
+        model->item(N_DISTDIR,0)->setText(ui->lineEdit_DISTDIR->text());
+        alltext.replace(list.at(N_DISTDIR),ui->lineEdit_DISTDIR->text()+"\n");
+    }
     // Update PORTAGE_TMPDIR flag
-    model->item(N_PORTAGETMPDIR,0)->setText(ui->lineEdit_PORTAGETMPDIR->text());
-    alltext.replace(list.at(N_PORTAGETMPDIR),ui->lineEdit_PORTAGETMPDIR->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_PORTAGETMPDIR->text(),list.at(N_PORTAGETMPDIR))) {
+        model->item(N_PORTAGETMPDIR,0)->setText(ui->lineEdit_PORTAGETMPDIR->text());
+        alltext.replace(list.at(N_PORTAGETMPDIR),ui->lineEdit_PORTAGETMPDIR->text()+"\n");
+    }
     // Update PKGDIR flag
-    model->item(N_PKGDIR,0)->setText(ui->lineEdit_PKGDIR->text());
-    alltext.replace(list.at(N_PKGDIR),ui->lineEdit_PKGDIR->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_PKGDIR->text(),list.at(N_PKGDIR))) {
+        model->item(N_PKGDIR,0)->setText(ui->lineEdit_PKGDIR->text());
+        alltext.replace(list.at(N_PKGDIR),ui->lineEdit_PKGDIR->text()+"\n");
+    }
     // Update PORT_LOGDIR flag
-    model->item(N_PORTLOGDIR,0)->setText(ui->lineEdit_PORTLOGDIR->text());
-    alltext.replace(list.at(N_PORTLOGDIR),ui->lineEdit_PORTLOGDIR->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_PORTLOGDIR->text(),list.at(N_PORTLOGDIR))) {
+        model->item(N_PORTLOGDIR,0)->setText(ui->lineEdit_PORTLOGDIR->text());
+        alltext.replace(list.at(N_PORTLOGDIR),ui->lineEdit_PORTLOGDIR->text()+"\n");
+    }
     // Update PORTDIR_OVERLAY flag
-    model->item(N_PORTDIROVERLAY,0)->setText(ui->lineEdit_PORTDIROVERLAY->text());
-    alltext.replace(list.at(N_PORTDIROVERLAY),ui->lineEdit_PORTDIROVERLAY->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_PORTDIROVERLAY->text(),list.at(N_PORTDIROVERLAY))) {
+        model->item(N_PORTDIROVERLAY,0)->setText(ui->lineEdit_PORTDIROVERLAY->text());
+        alltext.replace(list.at(N_PORTDIROVERLAY),ui->lineEdit_PORTDIROVERLAY->text()+"\n");
+    }
     // Update PORTAGE_ELOG_CLASSES flag
-    model->item(N_PORTAGEELOGCLASSES,0)->setText(ui->lineEdit_PORTAGEELOGCLASSES->text());
-    alltext.replace(list.at(N_PORTAGEELOGCLASSES),ui->lineEdit_PORTAGEELOGCLASSES->text()+"\n");
-
+    if (QString::compare(ui->lineEdit_PORTAGEELOGCLASSES->text(),list.at(N_PORTAGEELOGCLASSES))) {
+        model->item(N_PORTAGEELOGCLASSES,0)->setText(ui->lineEdit_PORTAGEELOGCLASSES->text());
+        alltext.replace(list.at(N_PORTAGEELOGCLASSES),ui->lineEdit_PORTAGEELOGCLASSES->text()+"\n");
+    }
     // refresh
     ui->textEdit_makeconfig->setText(alltext);
 
@@ -356,17 +368,20 @@ void MainWindow::UpdateDownload() {
     f->close();
 
     // Update RESUMECOMMAND flag
-    model->item(N_RESUMECOMMAND,0)->setText(ui->textEdit_RESUMECOMMAND->toPlainText());
-    alltext.replace(list.at(N_RESUMECOMMAND),ui->textEdit_RESUMECOMMAND->toPlainText()+"\n");
-
+    if (QString::compare(ui->textEdit_RESUMECOMMAND->toPlainText(),list.at(N_RESUMECOMMAND))) {
+        model->item(N_RESUMECOMMAND,0)->setText(ui->textEdit_RESUMECOMMAND->toPlainText());
+        alltext.replace(list.at(N_RESUMECOMMAND),ui->textEdit_RESUMECOMMAND->toPlainText()+"\n");
+    }
     // Update GENTOOMIRRORS flag
-    model->item(N_GENTOOMIRRORS,0)->setText(ui->textEdit_GENTOOMIRRORS->toPlainText());
-    alltext.replace(list.at(N_GENTOOMIRRORS),ui->textEdit_GENTOOMIRRORS->toPlainText()+"\n");
-
+    if (QString::compare(ui->textEdit_GENTOOMIRRORS->toPlainText(),list.at(N_GENTOOMIRRORS))) {
+        model->item(N_GENTOOMIRRORS,0)->setText(ui->textEdit_GENTOOMIRRORS->toPlainText());
+        alltext.replace(list.at(N_GENTOOMIRRORS),ui->textEdit_GENTOOMIRRORS->toPlainText()+"\n");
+    }
     // Update FETCHCOMMAND flag
-    model->item(N_FETCHCOMMAND,0)->setText(ui->textEdit_FETCHCOMMAND->toPlainText());
-    alltext.replace(list.at(N_FETCHCOMMAND),ui->textEdit_FETCHCOMMAND->toPlainText()+"\n");
-
+    if (QString::compare(ui->textEdit_FETCHCOMMAND->toPlainText(),list.at(N_FETCHCOMMAND))) {
+        model->item(N_FETCHCOMMAND,0)->setText(ui->textEdit_FETCHCOMMAND->toPlainText());
+        alltext.replace(list.at(N_FETCHCOMMAND),ui->textEdit_FETCHCOMMAND->toPlainText()+"\n");
+    }
     // refresh
     ui->textEdit_makeconfig->setText(alltext);
 
