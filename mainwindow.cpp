@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_UpdateGeneral,SIGNAL(clicked()),this,SLOT(UpdateGeneral()));
     connect(ui->pushButton_UpdatePortage,SIGNAL(clicked()),this,SLOT(UpdatePortage()));
     connect(ui->pushButton_UpdateDownload,SIGNAL(clicked()),this,SLOT(UpdateDownload()));
+    connect(ui->tabWidget,SIGNAL(currentChanged(int)),this,SLOT(TabChanged(int)));
 
     connect(ui->pushButton_Save,SIGNAL(clicked()),this,SLOT(SaveConf()));
 
@@ -415,6 +416,14 @@ void MainWindow::UpdateDownload() {
     f->open(QIODevice::WriteOnly | QIODevice::Text);
     f->write(alltext.toAscii());
     f->close();
+}
+void MainWindow::TabChanged(int i) {
+
+    if (i == 0) {
+        ui->checkBox_Comments->setChecked(false);
+        HideComment1st(false);
+    }
+
 }
 
 void MainWindow::changeEvent(QEvent *e)

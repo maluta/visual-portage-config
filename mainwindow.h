@@ -32,6 +32,7 @@ private slots:
     void UpdateGeneral();
     void UpdateDownload();
     void UpdatePortage();
+    void TabChanged(int);
     void SaveConf();
 
 private:
