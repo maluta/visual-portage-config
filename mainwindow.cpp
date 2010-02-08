@@ -29,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_Features,SIGNAL(clicked()),this,SLOT(addFeaturesFlag()));
     connect(ui->lineEdit_USE,SIGNAL(textChanged(QString)),this,SLOT(changeConfig(QString)));
     connect(ui->pushButton_UpdateGeneral,SIGNAL(clicked()),this,SLOT(UpdateGeneral()));
+    connect(ui->pushButton_UpdatePortage,SIGNAL(clicked()),this,SLOT(UpdatePortage()));
+    connect(ui->pushButton_UpdateDownload,SIGNAL(clicked()),this,SLOT(UpdateDownload()));
+
     connect(ui->pushButton_Save,SIGNAL(clicked()),this,SLOT(SaveConf()));
 
 
@@ -119,6 +122,7 @@ void MainWindow::SetupModel() {
         QStandardItem *item1 = new QStandardItem(list.at(index));
         model->setItem(index,item1);
         index++;
+
     }
 }
 
@@ -139,6 +143,8 @@ void MainWindow::ListUpdate(QFile *f) {
         list << alltext;
     }
     list.removeDuplicates();
+
+
 
 }
 
@@ -208,16 +214,15 @@ void MainWindow::describeUseFlag(int i) {
 
 void MainWindow::addUseFlag() {
 
+    QString _t(ui->lineEdit_USE->text());
 
-      QString _t(ui->lineEdit_USE->text());
+    _t = _t.trimmed(); // remove white spaces
+    _t = _t.replace("\"",""); // remove "
+    _t =  _t + " " + ui->comboBox_UseFlag->currentText(); // insert combobox content
+    _t = _t.replace("=","=\""); // insert " again
+    _t = _t.insert(_t.length(),"\""); // insert " at end
 
-      _t = _t.trimmed(); // remove white spaces
-      _t = _t.replace("\"",""); // remove "
-      _t =  _t + " " + ui->comboBox_UseFlag->currentText(); // insert combobox content
-      _t = _t.replace("=","=\""); // insert " again
-      _t = _t.insert(_t.length(),"\""); // insert " at end
-
-      ui->lineEdit_USE->setText(_t);
+    ui->lineEdit_USE->setText(_t);
 }
 
 void MainWindow::addFeaturesFlag() {
@@ -253,7 +258,22 @@ void MainWindow::SaveConf() {
     f->close();
 
     model->item(N_USE,0)->setText(list.at(N_USE));
-
+    model->item(N_CHOST,0)->setText(list.at(N_CHOST));
+    model->item(N_CFLAGS,0)->setText(list.at(N_CFLAGS));
+    model->item(N_CXXFLAGS,0)->setText(list.at(N_CXXFLAGS));
+    model->item(N_ACCEPTKEYWORDS,0)->setText(list.at(N_ACCEPTKEYWORDS));
+    model->item(N_FEATURES,0)->setText(list.at(N_FEATURES));
+    model->item(N_MAKEOPTS,0)->setText(list.at(N_MAKEOPTS));
+    model->item(N_PORTDIR,0)->setText(list.at(N_PORTDIR));
+    model->item(N_DISTDIR,0)->setText(list.at(N_DISTDIR));
+    model->item(N_PORTAGETMPDIR,0)->setText(list.at(N_PORTAGETMPDIR));
+    model->item(N_PKGDIR,0)->setText(list.at(N_PKGDIR));
+    model->item(N_PORTLOGDIR,0)->setText(list.at(N_PORTLOGDIR));
+    model->item(N_PORTDIROVERLAY,0)->setText(list.at(N_PORTDIROVERLAY));
+    model->item(N_PORTAGEELOGCLASSES,0)->setText(list.at(N_PORTAGEELOGCLASSES));
+    model->item(N_FETCHCOMMAND,0)->setText(list.at(N_FETCHCOMMAND));
+    model->item(N_RESUMECOMMAND,0)->setText(list.at(N_RESUMECOMMAND));
+    model->item(N_GENTOOMIRRORS,0)->setText(list.at(N_GENTOOMIRRORS));
 }
 
 void MainWindow::UpdateGeneral() {
@@ -295,6 +315,83 @@ void MainWindow::UpdateGeneral() {
     f->open(QIODevice::WriteOnly | QIODevice::Text);
     f->write(alltext.toAscii());
     f->close();
+}
+
+void MainWindow::UpdatePortage() {
+
+    f = new QFile(MAKE_CONF_PATH);
+    f->open(QIODevice::ReadOnly | QIODevice::Text);
+    alltext = f->readAll();
+    f->close();
+
+    // Update PORTDIR flag
+    model->item(N_PORTDIR,0)->setText(ui->lineEdit_PORTDIR->text());
+    alltext.replace(list.at(N_PORTDIR),ui->lineEdit_PORTDIR->text()+"\n");
+
+    // Update DISTDIR flag
+    model->item(N_DISTDIR,0)->setText(ui->lineEdit_DISTDIR->text());
+    alltext.replace(list.at(N_DISTDIR),ui->lineEdit_DISTDIR->text()+"\n");
+
+    // Update PORTAGE_TMPDIR flag
+    model->item(N_PORTAGETMPDIR,0)->setText(ui->lineEdit_PORTAGETMPDIR->text());
+    alltext.replace(list.at(N_PORTAGETMPDIR),ui->lineEdit_PORTAGETMPDIR->text()+"\n");
+
+    // Update PKGDIR flag
+    model->item(N_PKGDIR,0)->setText(ui->lineEdit_PKGDIR->text());
+    alltext.replace(list.at(N_PKGDIR),ui->lineEdit_PKGDIR->text()+"\n");
+
+    // Update PORT_LOGDIR flag
+    model->item(N_PORTLOGDIR,0)->setText(ui->lineEdit_PORTLOGDIR->text());
+    alltext.replace(list.at(N_PORTLOGDIR),ui->lineEdit_PORTLOGDIR->text()+"\n");
+
+    // Update PORTDIR_OVERLAY flag
+    model->item(N_PORTDIROVERLAY,0)->setText(ui->lineEdit_PORTDIROVERLAY->text());
+    alltext.replace(list.at(N_PORTDIROVERLAY),ui->lineEdit_PORTDIROVERLAY->text()+"\n");
+
+    // Update PORTAGE_ELOG_CLASSES flag
+    model->item(N_PORTAGEELOGCLASSES,0)->setText(ui->lineEdit_PORTAGEELOGCLASSES->text());
+    alltext.replace(list.at(N_PORTAGEELOGCLASSES),ui->lineEdit_PORTAGEELOGCLASSES->text()+"\n");
+
+    // refresh
+    ui->textEdit_makeconfig->setText(alltext);
+
+    // reopen to save updates (TODO: test seek(0))
+    f = new QFile(MAKE_CONF_PATH);
+    f->open(QIODevice::WriteOnly | QIODevice::Text);
+    f->write(alltext.toAscii());
+    f->close();
+}
+
+void MainWindow::UpdateDownload() {
+
+
+    f = new QFile(MAKE_CONF_PATH);
+    f->open(QIODevice::ReadOnly | QIODevice::Text);
+    alltext = f->readAll();
+    f->close();
+
+    // Update RESUMECOMMAND flag
+    model->item(N_RESUMECOMMAND,0)->setText(ui->textEdit_RESUMECOMMAND->toPlainText());
+    alltext.replace(list.at(N_RESUMECOMMAND),ui->textEdit_RESUMECOMMAND->toPlainText()+"\n");
+
+    // Update GENTOOMIRRORS flag
+    model->item(N_GENTOOMIRRORS,0)->setText(ui->textEdit_GENTOOMIRRORS->toPlainText());
+    alltext.replace(list.at(N_GENTOOMIRRORS),ui->textEdit_GENTOOMIRRORS->toPlainText()+"\n");
+
+    // Update FETCHCOMMAND flag
+    model->item(N_FETCHCOMMAND,0)->setText(ui->textEdit_FETCHCOMMAND->toPlainText());
+    alltext.replace(list.at(N_FETCHCOMMAND),ui->textEdit_FETCHCOMMAND->toPlainText()+"\n");
+
+    // refresh
+    ui->textEdit_makeconfig->setText(alltext);
+
+    // reopen to save updates (TODO: test seek(0))
+    f = new QFile(MAKE_CONF_PATH);
+    f->open(QIODevice::WriteOnly | QIODevice::Text);
+    f->write(alltext.toAscii());
+    f->close();
+
+
 }
 
 void MainWindow::changeEvent(QEvent *e)

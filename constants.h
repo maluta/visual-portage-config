@@ -10,7 +10,7 @@
 #define N_MAKEOPTS 17
 #define N_PORTDIR 9
 #define N_DISTDIR 10
-#define N_PORTAGETMPDIR 17
+#define N_PORTAGETMPDIR 8
 #define N_PKGDIR 11
 #define N_PORTLOGDIR 12
 #define N_PORTDIROVERLAY 13

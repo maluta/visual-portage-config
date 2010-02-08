@@ -30,6 +30,8 @@ private slots:
     void addFeaturesFlag();
     void changeConfig(QString);
     void UpdateGeneral();
+    void UpdateDownload();
+    void UpdatePortage();
     void SaveConf();
 
 private:
