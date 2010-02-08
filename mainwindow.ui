@@ -45,7 +45,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="movable">
        <bool>true</bool>
@@ -805,7 +805,7 @@
           <item>
            <widget class="QPushButton" name="pushButton_UpdatePortage">
             <property name="text">
-             <string>Update</string>
+             <string>&amp;Update</string>
             </property>
            </widget>
           </item>
@@ -907,7 +907,7 @@
           <item>
            <widget class="QPushButton" name="pushButton_UpdateDownload">
             <property name="text">
-             <string>Update</string>
+             <string>&amp;Update</string>
             </property>
            </widget>
           </item>
@@ -925,7 +925,7 @@
      <x>0</x>
      <y>0</y>
      <width>879</width>
-     <height>28</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

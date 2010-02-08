@@ -134,7 +134,6 @@ MainWindow::~MainWindow()
 void MainWindow::ListUpdate(QFile *f) {
 
     list.clear();
-
     f->seek(0);
 
     while (!f->atEnd()) {
@@ -283,6 +282,8 @@ void MainWindow::UpdateGeneral() {
 
     f = new QFile(MAKE_CONF_PATH);
     f->open(QIODevice::ReadOnly | QIODevice::Text);
+    ListUpdate(f);
+    f->seek(0);
     alltext = f->readAll();
     f->close();
 
@@ -307,7 +308,7 @@ void MainWindow::UpdateGeneral() {
         alltext.replace(list.at(N_ACCEPTKEYWORDS),ui->lineEdit_ACCEPTKEYWORDS->text()+"\n");
     }
     // Update FEATURES flag
-    if (QString::compare(ui->lineEdit_ACCEPTKEYWORDS->text(),list.at(N_ACCEPTKEYWORDS))) {
+    if (QString::compare(ui->lineEdit_FEATURES->text(),list.at(N_FEATURES))) {
         model->item(N_FEATURES,0)->setText(ui->lineEdit_FEATURES->text());
         alltext.replace(list.at(N_FEATURES),ui->lineEdit_FEATURES->text()+"\n");
     }
@@ -330,6 +331,8 @@ void MainWindow::UpdatePortage() {
 
     f = new QFile(MAKE_CONF_PATH);
     f->open(QIODevice::ReadOnly | QIODevice::Text);
+    ListUpdate(f);
+    f->seek(0);
     alltext = f->readAll();
     f->close();
 
@@ -375,6 +378,7 @@ void MainWindow::UpdatePortage() {
     f = new QFile(MAKE_CONF_PATH);
     f->open(QIODevice::WriteOnly | QIODevice::Text);
     f->write(alltext.toAscii());
+    ListUpdate(f);
     f->close();
 }
 
@@ -383,6 +387,8 @@ void MainWindow::UpdateDownload() {
 
     f = new QFile(MAKE_CONF_PATH);
     f->open(QIODevice::ReadOnly | QIODevice::Text);
+    ListUpdate(f);
+    f->seek(0);
     alltext = f->readAll();
     f->close();
 
