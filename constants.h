@@ -19,4 +19,8 @@
 #define N_RESUMECOMMAND 15
 #define N_GENTOOMIRRORS 16
 
+#define MAKE_CONF_PATH "/tmp/make.conf"
+#define USE_DESC_PATH  "/usr/portage/profiles/use.desc"
+
+
 #endif // CONSTANTS_H

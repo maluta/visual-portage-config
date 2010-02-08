@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>868</width>
-    <height>404</height>
+    <width>879</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,11 +39,74 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="movable">
        <bool>true</bool>
       </property>
+      <widget class="QWidget" name="tab_5">
+       <property name="statusTip">
+        <string>Contents of /etc/make.conf</string>
+       </property>
+       <attribute name="title">
+        <string>make.conf</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="QTextEdit" name="textEdit_makeconfig">
+          <property name="font">
+           <font>
+            <family>Courier [Adobe]</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_15">
+          <item>
+           <widget class="QCheckBox" name="checkBox_Comments">
+            <property name="text">
+             <string>&amp;Hide comments</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_Save">
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">gridline-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.05 rgba(14, 8, 73, 255), stop:0.36 rgba(28, 17, 145, 255), stop:0.6 rgba(126, 14, 81, 255), stop:0.75 rgba(234, 11, 11, 255), stop:0.79 rgba(244, 70, 5, 255), stop:0.86 rgba(255, 136, 0, 255), stop:0.935 rgba(239, 236, 55, 255));</string>
+            </property>
+            <property name="text">
+             <string>&amp;Save</string>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>General</string>
@@ -73,6 +136,9 @@
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(215, 215, 212);</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhNone</set>
             </property>
             <property name="frame">
              <bool>false</bool>
@@ -431,6 +497,43 @@
           </item>
          </layout>
         </item>
+        <item>
+         <widget class="Line" name="line_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_16">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_UpdateGeneral">
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>&amp;Update</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tab_2">
@@ -737,82 +840,6 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_4">
-       <property name="statusTip">
-        <string>Other options found in make.conf</string>
-       </property>
-       <attribute name="title">
-        <string>Other</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QTextEdit" name="textEdit"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_5">
-       <property name="statusTip">
-        <string>Contents of /etc/make.conf</string>
-       </property>
-       <attribute name="title">
-        <string>make.conf</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <item>
-         <widget class="QTextEdit" name="textEdit_makeconfig">
-          <property name="font">
-           <font>
-            <family>Courier [Adobe]</family>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_15">
-          <item>
-           <widget class="QCheckBox" name="checkBox_Comments">
-            <property name="text">
-             <string>&amp;Hide comments</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">gridline-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:0.05 rgba(14, 8, 73, 255), stop:0.36 rgba(28, 17, 145, 255), stop:0.6 rgba(126, 14, 81, 255), stop:0.75 rgba(234, 11, 11, 255), stop:0.79 rgba(244, 70, 5, 255), stop:0.86 rgba(255, 136, 0, 255), stop:0.935 rgba(239, 236, 55, 255));</string>
-            </property>
-            <property name="text">
-             <string>&amp;Save</string>
-            </property>
-            <property name="flat">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -822,7 +849,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>868</width>
+     <width>879</width>
      <height>24</height>
     </rect>
    </property>

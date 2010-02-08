@@ -8,8 +8,8 @@
 #include <QStandardItemModel>
 #include <QAbstractItemModel>
 #include <QListView>
-#include <QMap>
-#include <QVariant>
+#include <QFile>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -23,13 +23,17 @@ MainWindow::MainWindow(QWidget *parent) :
 
     highlighter = new Highlighter(ui->textEdit_makeconfig->document());
 
-    connect(ui->checkBox_Comments,SIGNAL(clicked(bool)),this,SLOT(HideComment(bool)));
+    connect(ui->checkBox_Comments,SIGNAL(clicked(bool)),this,SLOT(HideComment1st(bool)));
     connect(ui->comboBox_UseFlag,SIGNAL(currentIndexChanged(int)),this,SLOT(describeUseFlag(int)));
     connect(ui->pushButton_addUseFlag,SIGNAL(clicked()),this,SLOT(addUseFlag()));
     connect(ui->pushButton_Features,SIGNAL(clicked()),this,SLOT(addFeaturesFlag()));
     connect(ui->lineEdit_USE,SIGNAL(textChanged(QString)),this,SLOT(changeConfig(QString)));
+    connect(ui->pushButton_UpdateGeneral,SIGNAL(clicked()),this,SLOT(UpdateGeneral()));
+    connect(ui->pushButton_Save,SIGNAL(clicked()),this,SLOT(SaveConf()));
 
-    setupModel(); // don't forget it
+
+
+    SetupModel(); // don't forget it
 
     mapper_USE = new QDataWidgetMapper(this);
     mapper_USE = new QDataWidgetMapper(this);
@@ -104,30 +108,18 @@ MainWindow::MainWindow(QWidget *parent) :
     mapper_RESUMECOMMAND->setCurrentIndex(N_RESUMECOMMAND);
     mapper_GENTOOMIRRORS->setCurrentIndex(N_GENTOOMIRRORS);
 
-
-    connect(model,SIGNAL(itemChanged(QStandardItem*)),this,SLOT(_foo(QStandardItem*)));
- }
-
-void MainWindow::_foo(QStandardItem*) {
-
-    qDebug() << "data changed";
-
 }
 
-void MainWindow::setupModel() {
+void MainWindow::SetupModel() {
 
     model = new QStandardItemModel(this);
     int index=0;
 
     foreach (const QString &s, list) {
-
-    QStandardItem *item1 = new QStandardItem(list.at(index));
-    model->setItem(index,item1);
-
-    index++;
-
+        QStandardItem *item1 = new QStandardItem(list.at(index));
+        model->setItem(index,item1);
+        index++;
     }
-
 }
 
 MainWindow::~MainWindow()
@@ -135,36 +127,52 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::ListUpdate(QFile *f) {
+
+    list.clear();
+
+    f->seek(0);
+
+    while (!f->atEnd()) {
+        alltext = f->readLine();
+        alltext.remove(QRegExp("^#.*$"));
+        list << alltext;
+    }
+    list.removeDuplicates();
+
+}
+
 void MainWindow::HideComment1st(bool b) {
 
-    f = new QFile("/etc/make.conf");
+    f = new QFile(MAKE_CONF_PATH);
     f->open(QIODevice::ReadOnly | QIODevice::Text);
 
     if (b) {
 
-        while (!f->atEnd()) {
-            alltext = f->readLine();
-            alltext.remove(QRegExp("^#.*$"));
-            list << alltext;
-        }
-        list.removeDuplicates();
+        ListUpdate(f); // return on private variable 'list'
+
         alltext = list.join("");
+
+
+        ui->textEdit_makeconfig->setReadOnly(true);
+        ui->checkBox_Comments->setText("&Hide comments (read-only)");
+
 
 
     } else {
         alltext = f->readAll();
+        ui->textEdit_makeconfig->setReadOnly(false);
+        ui->checkBox_Comments->setText("&Hide comments");
+
     }
+
     ui->textEdit_makeconfig->setText(alltext);
     f->close();
-    delete f;
-}
+
+  }
 
 void MainWindow::HideComment(bool b) {
 
-    if (b)
-        ui->textEdit_makeconfig->setText(list.join(""));
-    else
-        ui->textEdit_makeconfig->setText(alltext);
 
 }
 
@@ -175,7 +183,7 @@ void MainWindow::AddUseList() {
 
     QString s;
 
-    f = new QFile("/usr/portage/profiles/use.desc");
+    f = new QFile(USE_DESC_PATH);
     f->open(QIODevice::ReadOnly | QIODevice::Text);
     while (!f->atEnd()) {
         s = f->readLine();
@@ -189,7 +197,7 @@ void MainWindow::AddUseList() {
     useflagdescription.removeFirst();
     useflagdescription.removeFirst();
     f->close();
-    delete f;
+
 }
 
 void MainWindow::describeUseFlag(int i) {
@@ -200,34 +208,93 @@ void MainWindow::describeUseFlag(int i) {
 
 void MainWindow::addUseFlag() {
 
-    ui->lineEdit_USE->setText("\"" + ui->lineEdit_USE->text().replace("\"","") + ui->comboBox_UseFlag->currentText() + " \"");
+
+      QString _t(ui->lineEdit_USE->text());
+
+      _t = _t.trimmed(); // remove white spaces
+      _t = _t.replace("\"",""); // remove "
+      _t =  _t + " " + ui->comboBox_UseFlag->currentText(); // insert combobox content
+      _t = _t.replace("=","=\""); // insert " again
+      _t = _t.insert(_t.length(),"\""); // insert " at end
+
+      ui->lineEdit_USE->setText(_t);
 }
 
 void MainWindow::addFeaturesFlag() {
 
-    QStandardItem *item1 = new QStandardItem("YAHOO!");
-    model->setItem(2,item1);
-    mapper_USE->setCurrentIndex(2);
+    QString _t(ui->lineEdit_FEATURES->text());
+
+    _t = _t.trimmed();
+    _t = _t.replace("\"","");
+    _t =  _t + " " + ui->comboBox_Features->currentText();
+    _t = _t.replace("=","=\"");
+    _t = _t.trimmed();
+    _t = _t.insert(_t.length(),"\"");
+
+    ui->lineEdit_FEATURES->setText(_t);
 
 
-    ui->lineEdit_FEATURES->setText("\"" + ui->lineEdit_FEATURES->text().replace("\"","") + ui->comboBox_Features->currentText() + " \"");
 }
 
 
 
 void MainWindow::changeConfig(QString s) {
 
-    qDebug() << s;
-    //QRegExp rx("^[a-zA-Z0-9]+");
-    //rx.indexIn(s,0);
-    //qDebug() << rx.cap(0);
-    //qDebug() << s;
-
-    //ui->textEdit_makeconfig->clear();
-    //ui->textEdit_makeconfig->append(alltext);
 
 
+}
 
+void MainWindow::SaveConf() {
+
+    f = new QFile(MAKE_CONF_PATH);
+    f->open(QIODevice::ReadWrite | QIODevice::Text);
+    f->write(ui->textEdit_makeconfig->toPlainText().toAscii());
+    ListUpdate(f);
+    f->close();
+
+    model->item(N_USE,0)->setText(list.at(N_USE));
+
+}
+
+void MainWindow::UpdateGeneral() {
+
+    f = new QFile(MAKE_CONF_PATH);
+    f->open(QIODevice::ReadOnly | QIODevice::Text);
+    alltext = f->readAll();
+    f->close();
+
+    // Update USE flag
+    model->item(N_USE,0)->setText(ui->lineEdit_USE->text());
+    alltext.replace(list.at(N_USE),ui->lineEdit_USE->text()+"\n");
+
+    // Update CHOST flag
+    model->item(N_CHOST,0)->setText(ui->lineEdit_CHOST->text());
+    alltext.replace(list.at(N_CHOST),ui->lineEdit_CHOST->text()+"\n");
+
+    // Update CXXFLAGS flag
+    model->item(N_CXXFLAGS,0)->setText(ui->lineEdit_CXXFLAGS->text());
+    alltext.replace(list.at(N_CXXFLAGS),ui->lineEdit_CXXFLAGS->text()+"\n");
+
+    // Update ACCEPTKEYWORDS flag
+    model->item(N_ACCEPTKEYWORDS,0)->setText(ui->lineEdit_ACCEPTKEYWORDS->text());
+    alltext.replace(list.at(N_ACCEPTKEYWORDS),ui->lineEdit_ACCEPTKEYWORDS->text()+"\n");
+
+    // Update FEATURES flag
+    model->item(N_FEATURES,0)->setText(ui->lineEdit_FEATURES->text());
+    alltext.replace(list.at(N_FEATURES),ui->lineEdit_FEATURES->text()+"\n");
+
+    // Update MAKEOPTS flag
+    model->item(N_MAKEOPTS,0)->setText(ui->lineEdit_MAKEOPTS->text());
+    alltext.replace(list.at(N_MAKEOPTS),ui->lineEdit_MAKEOPTS->text()+"\n");
+
+    // refresh
+    ui->textEdit_makeconfig->setText(alltext);
+
+    // reopen to save updates (TODO: test seek(0))
+    f = new QFile(MAKE_CONF_PATH);
+    f->open(QIODevice::WriteOnly | QIODevice::Text);
+    f->write(alltext.toAscii());
+    f->close();
 }
 
 void MainWindow::changeEvent(QEvent *e)

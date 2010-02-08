@@ -29,7 +29,8 @@ private slots:
     void addUseFlag();
     void addFeaturesFlag();
     void changeConfig(QString);
-    void _foo(QStandardItem*);
+    void UpdateGeneral();
+    void SaveConf();
 
 private:
     Ui::MainWindow *ui;
@@ -41,8 +42,8 @@ private:
     QString alltext;
 
     void AddUseList();
-
-    void setupModel();
+    void ListUpdate(QFile*);
+    void SetupModel();
 
     QStandardItemModel *model;
 
