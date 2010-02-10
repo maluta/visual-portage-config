@@ -143,9 +143,6 @@
             <property name="styleSheet">
              <string notr="true">background-color: rgb(215, 215, 212);</string>
             </property>
-            <property name="inputMethodHints">
-             <set>Qt::ImhNone</set>
-            </property>
             <property name="frame">
              <bool>false</bool>
             </property>
