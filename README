@@ -10,10 +10,8 @@
 	 qmake
 	 make 
 
-3) Make a copy of make.conf to tests (this are setted on constants.h)
+3) A sample make.conf was already dded to tests (this are setted on constants.h)
 
-	 cp /etc/make.conf /tmp
- 
 4) Run
 
 	./visualportageconfig
