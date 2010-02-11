@@ -536,17 +536,29 @@ void MainWindow::UpdateDownload() {
     // Update RESUMECOMMAND flag
     if (QString::compare(ui->textEdit_RESUMECOMMAND->toPlainText(),list.at(N_RESUMECOMMAND))) {
         model->item(N_RESUMECOMMAND,0)->setText(ui->textEdit_RESUMECOMMAND->toPlainText());
-        alltext.replace(list.at(N_RESUMECOMMAND),ui->textEdit_RESUMECOMMAND->toPlainText()+"\n");
+        if (QString::compare(list.at(N_RESUMECOMMAND),NOT_DEFINED))
+            alltext.replace(list.at(N_RESUMECOMMAND),ui->textEdit_RESUMECOMMAND->toPlainText()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update GENTOOMIRRORS flag
     if (QString::compare(ui->textEdit_GENTOOMIRRORS->toPlainText(),list.at(N_GENTOOMIRRORS))) {
         model->item(N_GENTOOMIRRORS,0)->setText(ui->textEdit_GENTOOMIRRORS->toPlainText());
-        alltext.replace(list.at(N_GENTOOMIRRORS),ui->textEdit_GENTOOMIRRORS->toPlainText()+"\n");
+        if (QString::compare(list.at(N_GENTOOMIRRORS),NOT_DEFINED))
+            alltext.replace(list.at(N_GENTOOMIRRORS),ui->textEdit_GENTOOMIRRORS->toPlainText()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update FETCHCOMMAND flag
     if (QString::compare(ui->textEdit_FETCHCOMMAND->toPlainText(),list.at(N_FETCHCOMMAND))) {
         model->item(N_FETCHCOMMAND,0)->setText(ui->textEdit_FETCHCOMMAND->toPlainText());
-        alltext.replace(list.at(N_FETCHCOMMAND),ui->textEdit_FETCHCOMMAND->toPlainText()+"\n");
+        if (QString::compare(list.at(N_FETCHCOMMAND),NOT_DEFINED))
+            alltext.replace(list.at(N_FETCHCOMMAND),ui->textEdit_FETCHCOMMAND->toPlainText()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // refresh
     ui->textEdit_makeconfig->setText(alltext);
