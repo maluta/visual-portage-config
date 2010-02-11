@@ -377,32 +377,58 @@ void MainWindow::UpdateGeneral() {
     // Update USE flag
     if (QString::compare(ui->lineEdit_USE->text(),list.at(N_USE))) {
         model->item(N_USE,0)->setText(ui->lineEdit_USE->text());
-        alltext.replace(list.at(N_USE),ui->lineEdit_USE->text()+"\n");
+
+        if (QString::compare(list.at(N_USE),NOT_DEFINED))
+            alltext.replace(list.at(N_USE),ui->lineEdit_USE->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update CHOST flag
     if (QString::compare(ui->lineEdit_CHOST->text(),list.at(N_CHOST))) {
         model->item(N_CHOST,0)->setText(ui->lineEdit_CHOST->text());
-        alltext.replace(list.at(N_CHOST),ui->lineEdit_CHOST->text()+"\n");
+
+        if (QString::compare(list.at(N_CHOST),NOT_DEFINED))
+            alltext.replace(list.at(N_CHOST),ui->lineEdit_CHOST->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update CXXFLAGS flag
     if (QString::compare(ui->lineEdit_CXXFLAGS->text(),list.at(N_CXXFLAGS))) {
         model->item(N_CXXFLAGS,0)->setText(ui->lineEdit_CXXFLAGS->text());
-        alltext.replace(list.at(N_CXXFLAGS),ui->lineEdit_CXXFLAGS->text()+"\n");
+        if (QString::compare(list.at(N_CXXFLAGS),NOT_DEFINED))
+            alltext.replace(list.at(N_CXXFLAGS),ui->lineEdit_CXXFLAGS->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update ACCEPTKEYWORDS flag
     if (QString::compare(ui->lineEdit_ACCEPTKEYWORDS->text(),list.at(N_ACCEPTKEYWORDS))) {
         model->item(N_ACCEPTKEYWORDS,0)->setText(ui->lineEdit_ACCEPTKEYWORDS->text());
-        alltext.replace(list.at(N_ACCEPTKEYWORDS),ui->lineEdit_ACCEPTKEYWORDS->text()+"\n");
+        if (QString::compare(list.at(N_ACCEPTKEYWORDS),NOT_DEFINED))
+            alltext.replace(list.at(N_ACCEPTKEYWORDS),ui->lineEdit_ACCEPTKEYWORDS->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update FEATURES flag
     if (QString::compare(ui->lineEdit_FEATURES->text(),list.at(N_FEATURES))) {
         model->item(N_FEATURES,0)->setText(ui->lineEdit_FEATURES->text());
-        alltext.replace(list.at(N_FEATURES),ui->lineEdit_FEATURES->text()+"\n");
+        if (QString::compare(list.at(N_FEATURES),NOT_DEFINED))
+            alltext.replace(list.at(N_FEATURES),ui->lineEdit_FEATURES->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update MAKEOPTS flag
     if (QString::compare(ui->lineEdit_MAKEOPTS->text(),list.at(N_MAKEOPTS))) {
         model->item(N_MAKEOPTS,0)->setText(ui->lineEdit_MAKEOPTS->text());
-        alltext.replace(list.at(N_MAKEOPTS),ui->lineEdit_MAKEOPTS->text()+"\n");
+        if (QString::compare(list.at(N_MAKEOPTS),NOT_DEFINED))
+            alltext.replace(list.at(N_MAKEOPTS),ui->lineEdit_MAKEOPTS->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // refresh
     ui->textEdit_makeconfig->setText(alltext);
