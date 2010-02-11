@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>879</width>
-    <height>446</height>
+    <height>451</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -119,22 +119,22 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
+         <widget class="QLabel" name="label">
+          <property name="font">
+           <font>
+            <family>Serif</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>USE</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QLabel" name="label">
-            <property name="font">
-             <font>
-              <family>Serif</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>USE=</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_USE">
             <property name="autoFillBackground">
@@ -165,6 +165,21 @@
          </layout>
         </item>
         <item>
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <family>Serif</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>CHOST</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="Line" name="line">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -173,21 +188,6 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QLabel" name="label_2">
-            <property name="font">
-             <font>
-              <family>Serif</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>CHOST=</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_CHOST">
             <property name="autoFillBackground">
@@ -207,6 +207,21 @@
          </layout>
         </item>
         <item>
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <family>Serif</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>CFLAGS</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="Line" name="line_2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -215,21 +230,6 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="font">
-             <font>
-              <family>Serif</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>CFLAGS=</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_CFLAGS">
             <property name="autoFillBackground">
@@ -246,22 +246,22 @@
          </layout>
         </item>
         <item>
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <family>Serif</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>CXXFLAGS</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_4">
-            <property name="font">
-             <font>
-              <family>Serif</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>CXXFLAGS=</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_CXXFLAGS">
             <property name="autoFillBackground">
@@ -278,6 +278,21 @@
          </layout>
         </item>
         <item>
+         <widget class="QLabel" name="label_5">
+          <property name="font">
+           <font>
+            <family>Serif</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>ACCEPT_KEYWORDS</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="Line" name="line_3">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -286,21 +301,6 @@
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="font">
-             <font>
-              <family>Serif</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>ACCEPT_KEYWORDS=</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_ACCEPTKEYWORDS">
             <property name="autoFillBackground">
@@ -324,22 +324,22 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="label_16">
+          <property name="font">
+           <font>
+            <family>Serif</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>FEATURES</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_6">
-          <item>
-           <widget class="QLabel" name="label_16">
-            <property name="font">
-             <font>
-              <family>Serif</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>FEATURES</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_FEATURES">
             <property name="autoFillBackground">
@@ -469,22 +469,22 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="label_15">
+          <property name="font">
+           <font>
+            <family>Serif</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>MAKEOPTS</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
-          <item>
-           <widget class="QLabel" name="label_15">
-            <property name="font">
-             <font>
-              <family>Serif</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>MAKEOPTS</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_MAKEOPTS">
             <property name="autoFillBackground">
@@ -548,36 +548,32 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_8">
-          <item>
-           <widget class="QLabel" name="label_6">
-            <property name="font">
-             <font>
-              <family>Serif</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>PORTDIR=</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_PORTDIR">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(215, 215, 212);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QLabel" name="label_6">
+          <property name="font">
+           <font>
+            <family>Serif</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>PORTDIR</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_PORTDIR">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(215, 215, 212);</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -592,24 +588,24 @@
              </font>
             </property>
             <property name="text">
-             <string>DISTDIR=</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_DISTDIR">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(215, 215, 212);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
+             <string>DISTDIR</string>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_DISTDIR">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(215, 215, 212);</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -624,24 +620,24 @@
              </font>
             </property>
             <property name="text">
-             <string>PORTAGE_TMPDIR=</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_PORTAGETMPDIR">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(215, 215, 212);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
+             <string>PORTAGE_TMPDIR</string>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_PORTAGETMPDIR">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(215, 215, 212);</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -656,24 +652,24 @@
              </font>
             </property>
             <property name="text">
-             <string>PKGDIR=</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_PKGDIR">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(215, 215, 212);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
+             <string>PKGDIR</string>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_PKGDIR">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(215, 215, 212);</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -688,24 +684,24 @@
              </font>
             </property>
             <property name="text">
-             <string>PORT_LOGDIR=</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_PORTLOGDIR">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(215, 215, 212);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
+             <string>PORT_LOGDIR</string>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_PORTLOGDIR">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(215, 215, 212);</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_13">
@@ -720,30 +716,30 @@
              </font>
             </property>
             <property name="text">
-             <string>PORTDIR_OVERLAY=</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_PORTDIROVERLAY">
-            <property name="toolTip">
-             <string/>
-            </property>
-            <property name="whatsThis">
-             <string/>
-            </property>
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(215, 215, 212);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
+             <string>PORTDIR_OVERLAY</string>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_PORTDIROVERLAY">
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="whatsThis">
+           <string/>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(215, 215, 212);</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_18">
@@ -758,24 +754,24 @@
              </font>
             </property>
             <property name="text">
-             <string>PORTAGE_ELOG_CLASSES=</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEdit_PORTAGEELOGCLASSES">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(215, 215, 212);</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
+             <string>PORTAGE_ELOG_CLASSES</string>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit_PORTAGEELOGCLASSES">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(215, 215, 212);</string>
+          </property>
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="Line" name="line_7">

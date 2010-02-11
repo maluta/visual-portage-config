@@ -21,6 +21,7 @@
 # useflags for you. 'emerge app-portage/ufed'
 #
 # Example:
+USE="X dbus hal threads"
 NETBEANS_MODULES="nb"
 # Host Setting
 # ============
