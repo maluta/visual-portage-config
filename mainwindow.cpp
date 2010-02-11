@@ -452,37 +452,65 @@ void MainWindow::UpdatePortage() {
     // Update PORTDIR flag
     if (QString::compare(ui->lineEdit_PORTDIR->text(),list.at(N_PORTDIR))) {
         model->item(N_PORTDIR,0)->setText(ui->lineEdit_PORTDIR->text());
-        alltext.replace(list.at(N_PORTDIR),ui->lineEdit_PORTDIR->text()+"\n");
+        if (QString::compare(list.at(N_PORTDIR),NOT_DEFINED))
+            alltext.replace(list.at(N_PORTDIR),ui->lineEdit_PORTDIR->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update DISTDIR flag
     if (QString::compare(ui->lineEdit_DISTDIR->text(),list.at(N_DISTDIR))) {
         model->item(N_DISTDIR,0)->setText(ui->lineEdit_DISTDIR->text());
-        alltext.replace(list.at(N_DISTDIR),ui->lineEdit_DISTDIR->text()+"\n");
+        if (QString::compare(list.at(N_DISTDIR),NOT_DEFINED))
+            alltext.replace(list.at(N_DISTDIR),ui->lineEdit_DISTDIR->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update PORTAGE_TMPDIR flag
     if (QString::compare(ui->lineEdit_PORTAGETMPDIR->text(),list.at(N_PORTAGETMPDIR))) {
         model->item(N_PORTAGETMPDIR,0)->setText(ui->lineEdit_PORTAGETMPDIR->text());
-        alltext.replace(list.at(N_PORTAGETMPDIR),ui->lineEdit_PORTAGETMPDIR->text()+"\n");
+        if (QString::compare(list.at(N_PORTAGETMPDIR),NOT_DEFINED))
+            alltext.replace(list.at(N_PORTAGETMPDIR),ui->lineEdit_PORTAGETMPDIR->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update PKGDIR flag
     if (QString::compare(ui->lineEdit_PKGDIR->text(),list.at(N_PKGDIR))) {
         model->item(N_PKGDIR,0)->setText(ui->lineEdit_PKGDIR->text());
-        alltext.replace(list.at(N_PKGDIR),ui->lineEdit_PKGDIR->text()+"\n");
+        if (QString::compare(list.at(N_PKGDIR),NOT_DEFINED))
+            alltext.replace(list.at(N_PKGDIR),ui->lineEdit_PKGDIR->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update PORT_LOGDIR flag
     if (QString::compare(ui->lineEdit_PORTLOGDIR->text(),list.at(N_PORTLOGDIR))) {
         model->item(N_PORTLOGDIR,0)->setText(ui->lineEdit_PORTLOGDIR->text());
-        alltext.replace(list.at(N_PORTLOGDIR),ui->lineEdit_PORTLOGDIR->text()+"\n");
+        if (QString::compare(list.at(N_PORTLOGDIR),NOT_DEFINED))
+            alltext.replace(list.at(N_PORTLOGDIR),ui->lineEdit_PORTLOGDIR->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update PORTDIR_OVERLAY flag
     if (QString::compare(ui->lineEdit_PORTDIROVERLAY->text(),list.at(N_PORTDIROVERLAY))) {
         model->item(N_PORTDIROVERLAY,0)->setText(ui->lineEdit_PORTDIROVERLAY->text());
-        alltext.replace(list.at(N_PORTDIROVERLAY),ui->lineEdit_PORTDIROVERLAY->text()+"\n");
+        if (QString::compare(list.at(N_PORTDIROVERLAY),NOT_DEFINED))
+            alltext.replace(list.at(N_PORTDIROVERLAY),ui->lineEdit_PORTDIROVERLAY->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // Update PORTAGE_ELOG_CLASSES flag
     if (QString::compare(ui->lineEdit_PORTAGEELOGCLASSES->text(),list.at(N_PORTAGEELOGCLASSES))) {
         model->item(N_PORTAGEELOGCLASSES,0)->setText(ui->lineEdit_PORTAGEELOGCLASSES->text());
-        alltext.replace(list.at(N_PORTAGEELOGCLASSES),ui->lineEdit_PORTAGEELOGCLASSES->text()+"\n");
+        if (QString::compare(list.at(N_PORTAGEELOGCLASSES),NOT_DEFINED))
+            alltext.replace(list.at(N_PORTAGEELOGCLASSES),ui->lineEdit_PORTAGEELOGCLASSES->text()+"\n");
+        else
+            alltext.append(ui->lineEdit_USE->text()+"\n");
+
     }
     // refresh
     ui->textEdit_makeconfig->setText(alltext);
