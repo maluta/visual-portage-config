@@ -391,7 +391,7 @@ void MainWindow::UpdateGeneral() {
         if (QString::compare(list.at(N_CHOST),NOT_DEFINED))
             alltext.replace(list.at(N_CHOST),ui->lineEdit_CHOST->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_CHOST->text()+"\n");
 
     }
     // Update CXXFLAGS flag
@@ -400,7 +400,7 @@ void MainWindow::UpdateGeneral() {
         if (QString::compare(list.at(N_CXXFLAGS),NOT_DEFINED))
             alltext.replace(list.at(N_CXXFLAGS),ui->lineEdit_CXXFLAGS->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_CXXFLAGS->text()+"\n");
 
     }
     // Update ACCEPTKEYWORDS flag
@@ -409,7 +409,7 @@ void MainWindow::UpdateGeneral() {
         if (QString::compare(list.at(N_ACCEPTKEYWORDS),NOT_DEFINED))
             alltext.replace(list.at(N_ACCEPTKEYWORDS),ui->lineEdit_ACCEPTKEYWORDS->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_ACCEPTKEYWORDS->text()+"\n");
 
     }
     // Update FEATURES flag
@@ -418,7 +418,7 @@ void MainWindow::UpdateGeneral() {
         if (QString::compare(list.at(N_FEATURES),NOT_DEFINED))
             alltext.replace(list.at(N_FEATURES),ui->lineEdit_FEATURES->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_FEATURES->text()+"\n");
 
     }
     // Update MAKEOPTS flag
@@ -427,7 +427,7 @@ void MainWindow::UpdateGeneral() {
         if (QString::compare(list.at(N_MAKEOPTS),NOT_DEFINED))
             alltext.replace(list.at(N_MAKEOPTS),ui->lineEdit_MAKEOPTS->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_MAKEOPTS->text()+"\n");
 
     }
     // refresh
@@ -455,7 +455,7 @@ void MainWindow::UpdatePortage() {
         if (QString::compare(list.at(N_PORTDIR),NOT_DEFINED))
             alltext.replace(list.at(N_PORTDIR),ui->lineEdit_PORTDIR->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_PORTDIR->text()+"\n");
 
     }
     // Update DISTDIR flag
@@ -464,7 +464,7 @@ void MainWindow::UpdatePortage() {
         if (QString::compare(list.at(N_DISTDIR),NOT_DEFINED))
             alltext.replace(list.at(N_DISTDIR),ui->lineEdit_DISTDIR->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_DISTDIR->text()+"\n");
 
     }
     // Update PORTAGE_TMPDIR flag
@@ -473,7 +473,7 @@ void MainWindow::UpdatePortage() {
         if (QString::compare(list.at(N_PORTAGETMPDIR),NOT_DEFINED))
             alltext.replace(list.at(N_PORTAGETMPDIR),ui->lineEdit_PORTAGETMPDIR->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_PORTAGETMPDIR->text()+"\n");
 
     }
     // Update PKGDIR flag
@@ -482,7 +482,7 @@ void MainWindow::UpdatePortage() {
         if (QString::compare(list.at(N_PKGDIR),NOT_DEFINED))
             alltext.replace(list.at(N_PKGDIR),ui->lineEdit_PKGDIR->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_PKGDIR->text()+"\n");
 
     }
     // Update PORT_LOGDIR flag
@@ -491,7 +491,7 @@ void MainWindow::UpdatePortage() {
         if (QString::compare(list.at(N_PORTLOGDIR),NOT_DEFINED))
             alltext.replace(list.at(N_PORTLOGDIR),ui->lineEdit_PORTLOGDIR->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_PORTLOGDIR->text()+"\n");
 
     }
     // Update PORTDIR_OVERLAY flag
@@ -500,7 +500,7 @@ void MainWindow::UpdatePortage() {
         if (QString::compare(list.at(N_PORTDIROVERLAY),NOT_DEFINED))
             alltext.replace(list.at(N_PORTDIROVERLAY),ui->lineEdit_PORTDIROVERLAY->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_PORTDIROVERLAY->text()+"\n");
 
     }
     // Update PORTAGE_ELOG_CLASSES flag
@@ -509,7 +509,7 @@ void MainWindow::UpdatePortage() {
         if (QString::compare(list.at(N_PORTAGEELOGCLASSES),NOT_DEFINED))
             alltext.replace(list.at(N_PORTAGEELOGCLASSES),ui->lineEdit_PORTAGEELOGCLASSES->text()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->lineEdit_PORTAGEELOGCLASSES->text()+"\n");
 
     }
     // refresh
@@ -539,7 +539,7 @@ void MainWindow::UpdateDownload() {
         if (QString::compare(list.at(N_RESUMECOMMAND),NOT_DEFINED))
             alltext.replace(list.at(N_RESUMECOMMAND),ui->textEdit_RESUMECOMMAND->toPlainText()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->textEdit_RESUMECOMMAND->toPlainText()+"\n");
 
     }
     // Update GENTOOMIRRORS flag
@@ -548,7 +548,7 @@ void MainWindow::UpdateDownload() {
         if (QString::compare(list.at(N_GENTOOMIRRORS),NOT_DEFINED))
             alltext.replace(list.at(N_GENTOOMIRRORS),ui->textEdit_GENTOOMIRRORS->toPlainText()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->textEdit_GENTOOMIRRORS->toPlainText()+"\n");
 
     }
     // Update FETCHCOMMAND flag
@@ -557,7 +557,7 @@ void MainWindow::UpdateDownload() {
         if (QString::compare(list.at(N_FETCHCOMMAND),NOT_DEFINED))
             alltext.replace(list.at(N_FETCHCOMMAND),ui->textEdit_FETCHCOMMAND->toPlainText()+"\n");
         else
-            alltext.append(ui->lineEdit_USE->text()+"\n");
+            alltext.append(ui->textEdit_FETCHCOMMAND->toPlainText()+"\n");
 
     }
     // refresh
