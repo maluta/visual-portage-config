@@ -21,6 +21,7 @@
 
 #define MAKE_CONF_PATH "make.conf.example"
 #define USE_DESC_PATH  "/usr/portage/profiles/use.desc"
+#define NOT_DEFINED "#not defined"
 
 
 #endif // CONSTANTS_H

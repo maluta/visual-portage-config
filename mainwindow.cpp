@@ -144,25 +144,111 @@ void MainWindow::ListUpdate(QFile *f) {
     }
     list.removeDuplicates();
 
+    int index;
 
-    list.swap(list.indexOf(QRegExp("^USE.+")),N_USE);
-    list.swap(list.indexOf(QRegExp("^CHOST.+")),N_CHOST);
-    list.swap(list.indexOf(QRegExp("^CFLAGS.+")),N_CFLAGS);
-    list.swap(list.indexOf(QRegExp("^CXXFLAGS.+")),N_CXXFLAGS);
-    list.swap(list.indexOf(QRegExp("^ACCEPT_KEYWORDS.+")),N_ACCEPTKEYWORDS);
-    list.swap(list.indexOf(QRegExp("^FEATURES.+")),N_FEATURES);
-    list.swap(list.indexOf(QRegExp("^PORTAGE_TMPDIR.+")),N_PORTAGETMPDIR);
-    list.swap(list.indexOf(QRegExp("^PORTDIR.+")),N_PORTDIR);
-    list.swap(list.indexOf(QRegExp("^DISTDIR.+")),N_DISTDIR);
-    list.swap(list.indexOf(QRegExp("^PKGDIR.+")),N_PKGDIR);
-    list.swap(list.indexOf(QRegExp("^PORT_LOGDIR.+")),N_PORTLOGDIR);
-    list.swap(list.indexOf(QRegExp("^PORTDIR_OVERLAY.+")),N_PORTDIROVERLAY);
-    list.swap(list.indexOf(QRegExp("^FETCHCOMMAND.+")),N_FETCHCOMMAND);
-    list.swap(list.indexOf(QRegExp("^RESUMECOMMAND.+")),N_RESUMECOMMAND);
-    list.swap(list.indexOf(QRegExp("^GENTOO_MIRRORS.+")),N_GENTOOMIRRORS);
-    list.swap(list.indexOf(QRegExp("^MAKEOPTS.+")),N_MAKEOPTS);
-    list.swap(list.indexOf(QRegExp("^PORTAGE_ELOG_CLASSES.+")),N_PORTAGEELOGCLASSES);
- }
+    index = list.indexOf(QRegExp("^USE.+"));
+    if (index != -1)
+        list.swap(index,N_USE);
+    else
+        list.insert(N_USE,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^CHOST.+"));
+    if (index != -1)
+        list.swap(index,N_CHOST);
+    else
+        list.insert(N_CHOST,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^CFLAGS.+"));
+    if (index != -1)
+        list.swap(index,N_CFLAGS);
+    else
+        list.insert(N_CFLAGS,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^CXXFLAGS.+"));
+    if (index != -1)
+        list.swap(index,N_CXXFLAGS);
+    else
+        list.insert(N_CXXFLAGS,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^ACCEPT_KEYWORDS.+"));
+    if (index != -1)
+        list.swap(index,N_ACCEPTKEYWORDS);
+    else
+        list.insert(N_ACCEPTKEYWORDS,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^FEATURES.+"));
+    if (index != -1)
+        list.swap(index,N_FEATURES);
+    else
+        list.insert(N_FEATURES,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^PORTAGE_TMPDIR.+"));
+    if (index != -1)
+        list.swap(index,N_PORTAGETMPDIR);
+    else
+        list.insert(N_PORTAGETMPDIR,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^PORTDIR.+"));
+    if (index != -1)
+        list.swap(index,N_PORTDIR);
+    else
+        list.insert(N_PORTDIR,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^DISTDIR.+"));
+    if (index != -1)
+        list.swap(index,N_DISTDIR);
+    else
+        list.insert(N_DISTDIR,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^PKGDIR.+"));
+    if (index != -1)
+        list.swap(index,N_PKGDIR);
+    else
+        list.insert(N_PKGDIR,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^PORT_LOGDIR.+"));
+    if (index != -1)
+        list.swap(index,N_PORTLOGDIR);
+    else
+        list.insert(N_PORTLOGDIR,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^PORTDIR_OVERLAY.+"));
+    if (index != -1)
+        list.swap(index,N_PORTDIROVERLAY);
+    else
+        list.insert(N_PORTDIROVERLAY,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^FETCHCOMMAND.+"));
+    if (index != -1)
+        list.swap(index,N_FETCHCOMMAND);
+    else
+        list.insert(N_FETCHCOMMAND,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^RESUMECOMMAND.+"));
+    if (index != -1)
+        list.swap(index,N_RESUMECOMMAND);
+    else
+        list.insert(N_RESUMECOMMAND,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^GENTOO_MIRRORS.+"));
+    if (index != -1)
+        list.swap(index,N_GENTOOMIRRORS);
+    else
+        list.insert(N_GENTOOMIRRORS,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^MAKEOPTS.+"));
+    if (index != -1)
+        list.swap(index,N_MAKEOPTS);
+    else
+        list.insert(N_MAKEOPTS,NOT_DEFINED);
+
+    index = list.indexOf(QRegExp("^PORTAGE_ELOG_CLASSES.+"));
+    if (index != -1)
+        list.swap(index ,N_PORTAGEELOGCLASSES);
+    else
+        list.insert(N_PORTAGEELOGCLASSES,NOT_DEFINED);
+
+}
 
 void MainWindow::HideComment1st(bool b) {
 
