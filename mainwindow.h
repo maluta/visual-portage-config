@@ -41,7 +41,7 @@ private:
     Highlighter *highlighter;
 
     QStringList useflagdescription;
-    QStringList list;
+    QStringList list; // QList<QString>
     QString alltext;
 
     void AddUseList();

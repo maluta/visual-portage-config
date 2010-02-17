@@ -30,8 +30,8 @@ NETBEANS_MODULES="nb"
 # Change this line as appropriate (i686, i586, i486 or i386).
 # All modern systems (even Athlons) should use "i686-pc-linux-gnu".
 # All K6's are i586.
+CHOST="12366"
 
-CHOST="i686-pc-linux-gnu"
 
 # Host and optimization settings 
 # ==============================

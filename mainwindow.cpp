@@ -137,116 +137,132 @@ void MainWindow::ListUpdate(QFile *f) {
     list.clear();
     f->seek(0);
 
+    for (int i=1; i<30; i++)
+        list.insert(i,QString(""));
+        //list.insert(i,QString(QString::number(i)));
+
+    qDebug() << "ListUpdate";
+
     while (!f->atEnd()) {
         alltext = f->readLine();
-        alltext.remove(QRegExp("^#.*$"));
+        qDebug() << "while";
+        alltext.remove(QRegExp("^#.*$")); //remove comments
+        qDebug() << alltext;
         list << alltext;
+        list.removeDuplicates();
     }
-    list.removeDuplicates();
+
+    //list.removeDuplicates();
 
     int index;
 
-    index = list.indexOf(QRegExp("^USE.+"));
+    index = list.indexOf(QRegExp("^USE.+"),1);
     if (index != -1)
         list.swap(index,N_USE);
     else
         list.insert(N_USE,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^CHOST.+"));
+    index = list.indexOf(QRegExp("^CHOST.+"),1);
     if (index != -1)
         list.swap(index,N_CHOST);
     else
         list.insert(N_CHOST,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^CFLAGS.+"));
+    index = list.indexOf(QRegExp("^CFLAGS.+"),1);
     if (index != -1)
         list.swap(index,N_CFLAGS);
     else
         list.insert(N_CFLAGS,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^CXXFLAGS.+"));
+    index = list.indexOf(QRegExp("^CXXFLAGS.+"),1);
     if (index != -1)
         list.swap(index,N_CXXFLAGS);
     else
         list.insert(N_CXXFLAGS,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^ACCEPT_KEYWORDS.+"));
+    index = list.indexOf(QRegExp("^ACCEPT_KEYWORDS.+"),1);
     if (index != -1)
         list.swap(index,N_ACCEPTKEYWORDS);
     else
         list.insert(N_ACCEPTKEYWORDS,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^FEATURES.+"));
-    if (index != -1)
-        list.swap(index,N_FEATURES);
-    else
-        list.insert(N_FEATURES,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^PORTAGE_TMPDIR.+"));
+    index = list.indexOf(QRegExp("^PORTAGE_TMPDIR.+"),1);
     if (index != -1)
         list.swap(index,N_PORTAGETMPDIR);
     else
         list.insert(N_PORTAGETMPDIR,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^PORTDIR.+"));
+    index = list.indexOf(QRegExp("^PORTDIR.+"),1);
     if (index != -1)
         list.swap(index,N_PORTDIR);
     else
         list.insert(N_PORTDIR,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^DISTDIR.+"));
+    index = list.indexOf(QRegExp("^DISTDIR.+"),1);
     if (index != -1)
         list.swap(index,N_DISTDIR);
     else
         list.insert(N_DISTDIR,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^PKGDIR.+"));
+    index = list.indexOf(QRegExp("^PKGDIR.+"),1);
     if (index != -1)
         list.swap(index,N_PKGDIR);
     else
         list.insert(N_PKGDIR,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^PORT_LOGDIR.+"));
+    index = list.indexOf(QRegExp("^PORT_LOGDIR.+"),1);
     if (index != -1)
         list.swap(index,N_PORTLOGDIR);
     else
         list.insert(N_PORTLOGDIR,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^PORTDIR_OVERLAY.+"));
+    index = list.indexOf(QRegExp("^PORTDIR_OVERLAY.+"),1);
     if (index != -1)
         list.swap(index,N_PORTDIROVERLAY);
     else
         list.insert(N_PORTDIROVERLAY,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^FETCHCOMMAND.+"));
+    index = list.indexOf(QRegExp("^FETCHCOMMAND.+"),1);
     if (index != -1)
         list.swap(index,N_FETCHCOMMAND);
     else
         list.insert(N_FETCHCOMMAND,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^RESUMECOMMAND.+"));
+    index = list.indexOf(QRegExp("^RESUMECOMMAND.+"),1);
     if (index != -1)
         list.swap(index,N_RESUMECOMMAND);
     else
         list.insert(N_RESUMECOMMAND,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^GENTOO_MIRRORS.+"));
+    index = list.indexOf(QRegExp("^GENTOO_MIRRORS.+"),1);
     if (index != -1)
         list.swap(index,N_GENTOOMIRRORS);
     else
         list.insert(N_GENTOOMIRRORS,NOT_DEFINED);
 
-    index = list.indexOf(QRegExp("^MAKEOPTS.+"));
+    index = list.indexOf(QRegExp("^MAKEOPTS.+"),1);
     if (index != -1)
         list.swap(index,N_MAKEOPTS);
-    else
+    else {
         list.insert(N_MAKEOPTS,NOT_DEFINED);
+    }
 
-    index = list.indexOf(QRegExp("^PORTAGE_ELOG_CLASSES.+"));
+    index = list.indexOf(QRegExp("^FEATURES.+"),1);
+    if (index != -1)
+        list.swap(index,N_FEATURES);
+    else {
+        qDebug() << "Nao encontrou FEATURES";
+        list.insert(N_FEATURES,NOT_DEFINED);
+    }
+    index = list.indexOf(QRegExp("^PORTAGE_ELOG_CLASSES.+"),1);
     if (index != -1)
         list.swap(index ,N_PORTAGEELOGCLASSES);
     else
         list.insert(N_PORTAGEELOGCLASSES,NOT_DEFINED);
+
+    error:    qDebug() << list;
+
 
 }
 
